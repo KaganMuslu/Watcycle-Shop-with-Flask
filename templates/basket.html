@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<title>Watcycle | Basket</title>
+{% endblock style %}
+
+
+{% block body %}
+    
+
+<br>
+<h2 style="margin-left:50px" class="text-left">Alışveriş Sepeti</h2>
+<hr>
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-8">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th style="width: 250px" scope="col">Ürün</th>
+                <th scope="col">Ürün Kodu</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                <th scope="row">xxx</th>
+                <td>
+                    <img style="width: 100%;" src="xxx" alt="">
+                </td>
+                <td>xxx <br> xxx</td>
+                <td>Adet: xxx</td>
+                <td>xxx</td>
+                <td><a href="basket/delete/xxx" type="button" class="btn btn-danger">Sil</a></td>
+                </tr>
+            </tbody>
+            </table>
+            <br><br><br>
+        </div>
+
+        
+
+        <div class="col-4">
+        <div class="col-4 card text-left mb-3" style="margin-left:50px; width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">Ara Toplam</h5>
+                <p class="card-text">
+                <table class="table table-sm table-striped table-hover">
+                    <tbody>
+                        <tr>
+                        <td>Ara Toplam</td>
+                        <td>xxx TL</td>
+                        </tr>
+                        <tr>
+                        <td>Kargo</td>
+                        <td>x TL</td>
+                        </tr>
+                        <tr>
+                        <td>Genel Toplam</td>
+                        <td>xxx TL</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </p>
+                <a href="#" class="btn btn-success">Alışverisi Tamamla</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock body %}

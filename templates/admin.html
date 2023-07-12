@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block style %}
+  <title>Watcycle | Admin</title>
+{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+  <div class="row text-center">
+    <div class="col-6">
+      <form class="needs-validation" action="/addWatch" method="post" novalidate>
+          <div style="margin-top:20px; margin-left:20px" class="card text-center mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Ürün Girişi</h5>
+              <br>
+              <div class="row mb-3">
+                <label for="inputBrand" class="col-sm-2 col-form-label">Marka</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputBrand" required/>
+                  <div class="invalid-feedback">Lütfen Marka Giriniz!</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputModel" class="col-sm-2 col-form-label">Model</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputModel" required/>
+                  <div class="invalid-feedback">Lütfen Model Giriniz!</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputImage" class="col-sm-2 col-form-label">Resim Url</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputImage" required/>
+                  <div class="invalid-feedback">Lütfen Url Giriniz!</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputFeatures" class="col-sm-2 col-form-label">Özellikler</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputFeatures"/>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputPrice" class="col-sm-2 col-form-label">Fiyat</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputPrice" required/>
+                  <div class="invalid-feedback">Lütfen Fiyat Giriniz!</div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputQuantity" class="col-sm-2 col-form-label">Miktar</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="inputQuantity" required/>
+                  <div class="invalid-feedback">Lütfen Miktar Giriniz!</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success">Ürün Girişi</button>
+            </div>
+          </div>
+      </form>
+    </div>
+    <div class="col-6">
+      <div style="margin-top:20px; margin-right:20px" class="card text-center mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Ürün Sil</h5>
+
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Marka</th>
+                <th scope="col">Model</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Sil</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for watch in watches %}
+                <tr>
+                  <th scope="col">{{ watch.id }}</th>
+                  <th scope="col">
+                    <img style="width: 90px" src="{{ watch.image_url }}" alt="" />
+                  </th>
+                  <th scope="col">{{ watch.brand }}</th>
+                  <th scope="col">{{ watch.model }}</th>
+                  <th scope="col">{{ watch.price }}</th>
+                  <th scope="col">{{ watch.quantity }}</th>
+                  <th scope="col">
+                    <a href="/delete/{{ watch.id }}"><button type="button" class="btn btn-danger">Sil</button></a>
+                  </th>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
